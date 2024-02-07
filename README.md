@@ -86,10 +86,25 @@ If you already have an existing Domain Controller and you'd like to promote your
  * https://learn.microsoft.com/en-us/powershell/module/addsdeployment/install-addsforest
 
 
-# Managing a Domain Controller Remotely
+# Configuring DNS Forwarders on a Domain Controller
 
+Since the default configuration for domain controllers is to act as a DNS server, you may want to consider modifying the DNS Server Forwarders so that your DC/DNS server can forward resolution requests onwards.
 
+To see what your DNS Server Forwarders are using Powershell, type `Get-DnsServerForwarder`.
 
+You can add a forwarder with the `Add-DnsServerForwarder` cmdlet. 
+
+Example:
+```
+Add-DnsServerForwarder -IPAddress 208.67.222.222
+```
+
+To remove a forwarder, use `Remove-DnsServerForwarder`.
+
+Example:
+```
+Remove-DnsServerForwarder -IPAddress 208.67.222.222
+```
 
 # Windows Remote Management (WinRM) Configuration
 
